@@ -12,6 +12,7 @@ if (Meteor.isClient) {
     'click button': function () {
       // increment the counter when button is clicked
       alert("clicked!")
+      socekt.emit('test');
       // Session.set('counter', Session.get('counter') + 1);
     }
   });
@@ -19,6 +20,10 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
+
+    socket.on('test', function(){
+      console.log('fired');
+    })
     // code to run on server at startup
   });
 }
