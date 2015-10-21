@@ -1,10 +1,10 @@
-var $Messages = new Mongo.Collection('messages')
-console.log($Messages.find({}))
+var Messages = new Mongo.Collection('messages')
+AllDBMessages = Messages.find().fetch()
 
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
-  Session.setDefault('messages', [])
+  Session.setDefault('messages', AllDBMessages)
 
   Template.chat_window.helpers({
     messages: function() {
@@ -19,10 +19,10 @@ if (Meteor.isClient) {
       input_text = $("#write-chat").val()
       Session.set('message', input_text)
       $Messages.insert({text: input_text})
-
+      AllDBMessages = Messages.find().fetch()
 
       // right now, this isn't returning an array, and we need it to
-      Session.set('messages', $Messages.find({}))
+      Session.set('messages', AllDBMessages)
       $('#write-chat').val('')
     }
   });
