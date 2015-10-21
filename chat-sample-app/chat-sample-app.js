@@ -9,7 +9,7 @@ if (Meteor.isClient) {
   Template.chat_window.helpers({
     messages: function() {
 
-      return AllDBMessages
+      return Session.get('messages')
     }
   });
 
