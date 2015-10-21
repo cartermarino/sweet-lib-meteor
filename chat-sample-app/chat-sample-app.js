@@ -1,7 +1,7 @@
 var $Messages = new Mongo.Collection('messages')
+AllDBMessages = $Messages.find().fetch()
 
 if (Meteor.isClient) {
-  AllDBMessages = $Messages.find().fetch()
   Session.setDefault('messages', AllDBMessages)
 
   Template.chat_window.helpers({
