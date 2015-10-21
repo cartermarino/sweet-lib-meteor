@@ -23,12 +23,19 @@
     <div id="chat-window">
       <div>
         <ul>
-        <li>{{messages}}</li>
+          <!-- need to iterate through messages -->
+          {{#each messages}}
+            {{> message}}
+          {{/each}}
         </ul>
       </div>
     </div>
   {{> buddy_list}}
   </div>
+</template>
+
+<template name="message">
+  <li>{{text}}</li>
 </template>
 
 <template name="input_box">
@@ -40,6 +47,7 @@
     </form>
   </div>
 </template>
+
 
 
 <template name="buddy_list">

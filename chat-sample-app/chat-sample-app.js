@@ -1,35 +1,37 @@
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
-  Session.setDefault('message', '')
   Session.setDefault('messages', [])
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      alert("clicked!")
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+  // Template.hello.helpers({
+  //   counter: function () {
+  //     return Session.get('counter');
+  //   }
+  // });
+  //
+  // Template.hello.events({
+  //   'click button': function () {
+  //     // increment the counter when button is clicked
+  //     alert("clicked!")
+  //     Session.set('counter', Session.get('counter') + 1);
+  //   }
+  // });
 
   Template.chat_window.helpers({
-    message: function(){
-      return Session.get('messages');
-    }
+    messages: [
+      {text: "hello"},
+      {text: "hi"},
+      {text: "how y'all doing"}
+    ]
+    
   });
+
   Template.input_box.events({
     submit: function() {
       input_text = $("#write-chat").val()
-      Session.set('message', input_text)
-      Session.set('messages', Session.get('message'))
-
-
+      console.log(input_text)
+      // Session.set('message', input_text)
+      // Session.set('messages', Session.get('message'))
       //alert("WHOAH HEY")
     }
   });
