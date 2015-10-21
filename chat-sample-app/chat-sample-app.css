@@ -1,1 +1,16 @@
 /* CSS declarations go here */
+
+#chat-window {
+  text-align: center;
+  min-width: 80%;
+  max-width: 80%;
+  height: 500px;
+  border: 1px solid black;
+  float: left;
+}
+
+#buddy-list {
+  float: right;
+  max-width: 15%;
+  margin-right: 5%;
+}

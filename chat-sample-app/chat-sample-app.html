@@ -6,9 +6,37 @@
   <h1>Welcome to Meteor!</h1>
 
   {{> hello}}
+  {{> chat_window}}
+  {{> buddy_list}}
+
 </body>
 
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="chat_window">
+  <div>
+    <h2>CHAT!</h2>
+
+    <div id="chat-window">
+      <div>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+
+<template name="buddy_list">
+  <div id="buddy-list">
+    <h3>Some Buddies</h3>
+      <ul>
+        <li>Buddy 1</li>
+        <li>Buddy 2</li>
+        <li>Buddy 3</li>
+        <li>Buddy 4</li>
+      </ul>
+  </div>
 </template>
