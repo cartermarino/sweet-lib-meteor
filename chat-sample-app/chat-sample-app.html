@@ -5,16 +5,10 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
   {{> chat_window}}
-  {{> buddy_list}}
-
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+
 
 <template name="chat_window">
   <div>
@@ -22,12 +16,29 @@
 
     <div id="chat-window">
       <div>
+        <ul>
+          <!-- need to iterate through messages -->
+          {{#each messages}}
+            {{> message}}
+          {{/each}}
+        </ul>
       </div>
     </div>
-
+    <div>
+      <form class="new-task">
+        <textarea id="write-chat" rows="4" cols="50" placeholder="Add a new message" ></textarea>
+        <br/>
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+  {{> buddy_list}}
   </div>
+
 </template>
 
+<template name="message">
+  <li>{{text}}</li>
+</template>
 
 <template name="buddy_list">
   <div id="buddy-list">
