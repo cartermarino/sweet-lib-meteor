@@ -1,14 +1,11 @@
 var $Messages = new Mongo.Collection('messages')
-AllDBMessages = $Messages.find().fetch()
 
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
+  AllDBMessages = $Messages.find().fetch()
   Session.setDefault('messages', AllDBMessages)
 
   Template.chat_window.helpers({
     messages: function() {
-
       return Session.get('messages')
     }
   });
