@@ -1,12 +1,17 @@
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
-  Session.setDefault('messages', [{text: "sample message, heeeeey"}])
+  Session.setDefault('messages', [])
 
   Template.chat_window.helpers({
     messages: function() {
       return Session.get('messages')
     }
+  });
+  
+  $('#write-chat').focus(
+      function(){
+          $(this).val('');
   });
 
   Template.chat_window.events({
@@ -16,13 +21,12 @@ if (Meteor.isClient) {
       Session.set('message', input_text)
       new_arr = Session.get('messages')
       new_arr.push({text: input_text})
-
       Session.set('messages', new_arr)
-
     }
   });
 
 }
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
