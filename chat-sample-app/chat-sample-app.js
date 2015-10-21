@@ -1,5 +1,5 @@
-var Messages = new Mongo.Collection('messages')
-AllDBMessages = Messages.find().fetch()
+var $Messages = new Mongo.Collection('messages')
+AllDBMessages = $Messages.find().fetch()
 
 if (Meteor.isClient) {
   // counter starts at 0
@@ -19,7 +19,7 @@ if (Meteor.isClient) {
       input_text = $("#write-chat").val()
       Session.set('message', input_text)
       $Messages.insert({text: input_text})
-      AllDBMessages = Messages.find().fetch()
+      AllDBMessages = $Messages.find().fetch()
 
       // right now, this isn't returning an array, and we need it to
       Session.set('messages', AllDBMessages)
