@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
-  Session.setDefault('messages', [{text: "sample message, heeeeey"}])
+  Session.setDefault('messages', [])
 
   Template.chat_window.helpers({
     messages: function() {
@@ -14,9 +14,9 @@ if (Meteor.isClient) {
       event.preventDefault()
       input_text = $("#write-chat").val()
       Session.set('message', input_text)
+
       new_arr = Session.get('messages')
       new_arr.push({text: input_text})
-
       Session.set('messages', new_arr)
 
     }
