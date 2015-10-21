@@ -1,7 +1,28 @@
+Chat = new Mongo.Collection("chat");
+Chat.insert({text: 'sample'})
+
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
   Session.setDefault('messages', [])
+
+  Template.body.helpers({
+    chat: function(){
+      return Chat.find({});
+    }
+  });
+
+  Template.body.events({
+    "submit .new-chat": function (event){
+      event.preventDefault();
+      var text = event.target.text.value;
+      Chat.insert({
+        text: text,
+        createdAt: new Date()
+      });
+      event.target.text.value = "";
+    }
+  })
 
   Template.chat_window.helpers({
     messages: function() {
@@ -29,25 +50,3 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
-
-// Trying to set up database... not sure if works yet!
-
-// Chat = new Mongo.Collection("chat");
-// if (Meteor.isClient){
-//   Template.body.helpers({
-//     chat: function(){
-//       return Chat.find({});
-//     }
-//   });
-//   Template.body.events({
-//     "submit .new-chat": function (event){
-//       event.preventDefault();
-//       var text = event.target.text.value;
-//       Chat.insert({
-//         text: text,
-//         createdAt: new Date()
-//       });
-//       event.target.text.value = "";
-//     }
-//   })
-// }
