@@ -18,11 +18,12 @@ if (Meteor.isClient) {
       new_arr = Session.get('messages')
       new_arr.push({text: input_text})
       Session.set('messages', new_arr)
-
+      $('#write-chat').val('')
     }
   });
 
 }
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
