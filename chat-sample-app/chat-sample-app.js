@@ -9,10 +9,9 @@ if (Meteor.isClient) {
   Template.chat_window.helpers({
     messages: function() {
       return Session.get('messages')
-
     }
   });
-​
+
   Template.chat_window.events({
     submit: function() {
       event.preventDefault()
@@ -25,20 +24,20 @@ if (Meteor.isClient) {
       $('#write-chat').val('')
     }
   });
-​
+
 }
-​
-​
+
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
 }
-​
+
 // Trying to set up database... not sure if works yet!
-​
+
 // Chat = new Mongo.Collection("chat");
-​
+
 //   Template.body.events({
 //     "submit .new-chat": function (event){
 //       event.preventDefault();
