@@ -8,11 +8,6 @@ if (Meteor.isClient) {
       return Session.get('messages')
     }
   });
-  
-  $('#write-chat').focus(
-      function(){
-          $(this).val('');
-  });
 
   Template.chat_window.events({
     submit: function() {
@@ -22,6 +17,7 @@ if (Meteor.isClient) {
       new_arr = Session.get('messages')
       new_arr.push({text: input_text})
       Session.set('messages', new_arr)
+      $('#write-chat').val('')
     }
   });
 
