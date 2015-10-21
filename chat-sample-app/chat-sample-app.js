@@ -1,14 +1,17 @@
-Chats = new Mongo.Collection("chats")
-console.log(chats.find({}))
-​
+
+var $Messages = new Mongo.Collection('messages')
+AllDBMessages = $Messages.find().fetch()
+
 if (Meteor.isClient) {
   // counter starts at 0
-  Session.setDefault("messages", [])
-​
+  Session.setDefault('counter', 0);
+  Session.setDefault('messages', AllDBMessages)
+
   Template.chat_window.helpers({
     messages: function() {
-​
-      return Session.get("messages")
+
+      return AllDBMessages
+>>>>>>> 852fd26f0794091e61ba703f1bb9b6c2ffc86e4b
     }
   });
 ​
@@ -16,13 +19,14 @@ if (Meteor.isClient) {
     submit: function() {
       event.preventDefault()
       input_text = $("#write-chat").val()
-      Session.set("message", input_text)
-      Chats.insert({text: input_text})
-​
-​
+
+      Session.set('message', input_text)
+      $Messages.insert({text: input_text, createdAt: new Date()})
+      AllDBMessages = $Messages.find().fetch()
+
       // right now, this isn't returning an array, and we need it to
-      Session.set("messages", Chats.find({}))
-      $('#write-chat').val("")
+      Session.set('messages', AllDBMessages)
+      $('#write-chat').val('')
     }
   });
 ​
