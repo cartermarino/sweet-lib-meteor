@@ -9,7 +9,7 @@ if (Meteor.isClient) {
   Template.chat_window.helpers({
     messages: function() {
 
-      return Session.get('messages')
+      return AllDBMessages
     }
   });
 
@@ -18,7 +18,7 @@ if (Meteor.isClient) {
       event.preventDefault()
       input_text = $("#write-chat").val()
       Session.set('message', input_text)
-      $Messages.insert({text: input_text})
+      $Messages.insert({text: input_text, createdAt: new Date()})
       AllDBMessages = $Messages.find().fetch()
 
       // right now, this isn't returning an array, and we need it to
