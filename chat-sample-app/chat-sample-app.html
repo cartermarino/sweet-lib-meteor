@@ -7,7 +7,7 @@
 
   {{> hello}}
   {{> chat_window}}
-  {{> buddy_list}}
+  {{> input_box}}
 
 </body>
 
@@ -22,9 +22,22 @@
 
     <div id="chat-window">
       <div>
+        <ul>
+        <li>{{messages}}</li>
+        </ul>
       </div>
     </div>
+  {{> buddy_list}}
+  </div>
+</template>
 
+<template name="input_box">
+  <div>
+    <form class="new-task">
+      <textarea id="write-chat" rows="4" cols="50" placeholder="Add a new message" ></textarea>
+      <br/>
+      <input type="submit" value="Submit"/>
+    </form>
   </div>
 </template>
 
