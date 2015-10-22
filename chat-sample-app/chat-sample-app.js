@@ -25,6 +25,16 @@ if (Meteor.isClient) {
     }
   });
 
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_ONLY'
+});
+
+  Template.buddy_list.helpers({
+    currentUser: function(){
+      return Meteor.user()
+    }
+  })
+
 }
 
 

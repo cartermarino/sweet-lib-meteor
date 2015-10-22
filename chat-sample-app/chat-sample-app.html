@@ -4,10 +4,9 @@
 
 <body>
   <h1>Welcome to Meteor Chat</h1>
-
+  {{> loginButtons}}
   {{> chat_window}}
 </body>
-
 
 
 <template name="chat_window">
@@ -32,21 +31,17 @@
     </div>
 
   </div>
-
 </template>
 
 <template name="message">
-  <li>{{text}}</li>
+  <li><strong>{{currentUser.username}}</strong>: {{text}}</li>
 </template>
 
 <template name="buddy_list">
   <div id="buddy-list">
-    <h3>Buddies</h3>
-      <ol>
-        <li>Buddy 1</li>
-        <li>Buddy 2</li>
-        <li>Buddy 3</li>
-        <li>Buddy 4</li>
-      </ol>
+    <h3>Online Buddies</h3>
+      <ul>
+        <li>{{currentUser.username}}</li>
+      </ul> 
   </div>
 </template>
