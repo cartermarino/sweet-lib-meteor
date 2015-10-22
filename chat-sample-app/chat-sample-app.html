@@ -3,7 +3,7 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Welcome to Meteor Chat</h1>
 
   {{> chat_window}}
 </body>
@@ -11,9 +11,7 @@
 
 
 <template name="chat_window">
-  <div>
-    <h2>CHAT!</h2>
-
+  <div id="container">
     <div id="chat-window">
       <div>
         <ul>
@@ -24,14 +22,15 @@
         </ul>
       </div>
     </div>
+      {{> buddy_list}}
     <div>
       <form class="new-task">
         <input type="text" id="write-chat" name="name" placeholder="Add a new message" />
         <br/>
-        <input type="submit" value="Submit"/>
+        <input id="submit" type="submit" value="Submit"/>
       </form>
     </div>
-  {{> buddy_list}}
+
   </div>
 
 </template>
@@ -42,12 +41,12 @@
 
 <template name="buddy_list">
   <div id="buddy-list">
-    <h3>Some Buddies</h3>
-      <ul>
+    <h3>Buddies</h3>
+      <ol>
         <li>Buddy 1</li>
         <li>Buddy 2</li>
         <li>Buddy 3</li>
         <li>Buddy 4</li>
-      </ul>
+      </ol>
   </div>
 </template>
