@@ -9,7 +9,6 @@
 </body>
 
 
-
 <template name="chat_window">
   <div>
     <h2>CHAT!</h2>
@@ -33,18 +32,18 @@
     </div>
   {{> buddy_list}}
   </div>
-
 </template>
 
 <template name="message">
-  <li>{{text}}</li>
+  <li><strong>{{currentUser.username}}</strong>: {{text}}</li>
 </template>
 
 <template name="buddy_list">
   <div id="buddy-list">
     <h3>Online Buddies</h3>
       <ul>
-        <li>{{currentUser}}</li>
+        <li>{{currentUser.username}}</li>
       </ul>
   </div>
 </template>
+

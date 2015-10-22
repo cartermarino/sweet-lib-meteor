@@ -30,7 +30,7 @@ Accounts.ui.config({
 
   Template.buddy_list.helpers({
     currentUser: function(){
-      return Meteor.users.find().fetch()
+      return Meteor.user()
     }
   })
 
